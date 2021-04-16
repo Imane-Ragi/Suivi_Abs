@@ -1,0 +1,66 @@
+﻿@model Suivi_Abs.Models.Seance
+
+@{
+    
+}
+
+
+
+<h4>Seance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddorEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id_S " />
+            <div class="form-group">
+                <label asp-for="date_S" class="control-label"></label>
+                <input asp-for="date_S" class="form-control" />
+                <span asp-validation-for="date_S" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Num_S" class="control-label"></label>
+                <input asp-for="Num_S" class="form-control"  placeholder=" Format: SE_numero de seance_matière" />
+                <span asp-validation-for="Num_S" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duree" class="control-label"></label>
+                <input asp-for="Duree" class="form-control" />
+                <span asp-validation-for="Duree" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="id_M" class="control-label"></label>
+                <select asp-for="id_M" asp-items=@ViewBag.mat  class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="id_G" class="control-label"></label>
+                <select asp-for="id_G" asp-items=@ViewBag.group class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="numSalle" class="control-label"></label>
+                <input asp-for="numSalle" class="form-control" />
+                <span asp-validation-for="numSalle" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Valider" class="btn btn-primary btn-block" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i>Retourner à la liste</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

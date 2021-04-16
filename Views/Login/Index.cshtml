@@ -1,0 +1,57 @@
+﻿@using Suivi_Abs.Models
+@model Suivi_Abs.Models.Compte
+
+@{
+    Layout = null;
+
+
+}
+
+    <head>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+       
+        <link href="~/css/Login_v3.css" rel="stylesheet" media=screen/>
+
+        <script src="https://kit.fontawesome.com/5ef8a381d2.js" crossorigin="anonymous"></script>
+
+    </head>
+    <body style=" background-image:url(../images/Class.jpg);">
+        <form asp-action="CheckAccount" asp-controller="Login" method="post" >
+        
+            <div class="loginBox">
+                <img src="~/images/user.jpg" class="user" />
+                <h2>Connexion</h2>
+
+                <div>
+                    <p>Email</p>
+                    <input asp-for="email" placeholder="entrez votre email" required />
+
+
+                </div>
+                <div>
+                    <p>Mot de passe</p>
+                    <input asp-for="password" required />
+
+
+                </div>
+                @if (@ViewBag.error != null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        <span>@ViewBag.error</span>
+                    </div>
+                }
+
+                <center> <button type="submit" class="btn btn-primary">Se Connecter</button></center>
+                <hr />
+
+                <p style="color:white">Si vous etes Etudiant veuillez marquez votre présence en cliquant  <a asp-action="Verifier">Ici</a></p>
+            </div>
+        </form>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+    </body>

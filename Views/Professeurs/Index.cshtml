@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Suivi_Abs.Models.Professeur>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1  style="text-align:center">Professeurs</h1>
+
+<p>
+  
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.matricule)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nComplet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.specialité)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateR)
+            </th>
+            <th>
+                <a asp-action="AddorEdit" class="btn btn-outline-success"> <i class="far fa-plus-square"></i>Professeur</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.matricule)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nComplet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.specialité)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateR)
+            </td>
+            <td>
+                <a asp-action="AddorEdit" asp-route-id="@item.id_P"><i class="fa fa-marker fa-lg"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.id_P" class="text-danger ml-1" onclick="return confirm('vous risquez de supprimer toutes les infos liées à ce professeur')" ><i class="fa fa-trash-alt fa-lg"></i></a>
+              
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

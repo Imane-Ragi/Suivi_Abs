@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Suivi_Abs.Models.Etudiant>
+
+@{
+    ViewData["Title"] = "Index";
+  
+}
+
+<h1  style="text-align:center">Etudiants</h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Nom Complet
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.matricule)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Groupe.Numgroupe)        
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lieu_n)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.adresse)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                <a asp-action="AddorEdit" class="btn btn-outline-success"> <i class="far fa-plus-square"></i>Etudiant</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="~/images/@item.imageE"
+                     class="rounded-circle"
+                     height="40" width="40"
+                     asp-append-version="true" />
+               @item.Ncomplet
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.matricule)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Groupe.Numgroupe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lieu_n)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adresse)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                <a asp-action="AddorEdit" asp-route-id="@item.id_E"><i class="fa fa-marker fa-lg"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.id_E" class="text-danger ml-1 btn " onclick="return confirm('vous risquez de supprimer toutes les infos liées à cet etudiant')"><i class="fa fa-trash-alt fa-lg"></i></a> |
+                <a asp-action="listAbs" asp-route-id="@item.id_E"><i class="fas fa-list-alt fa-lg">Abs</i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

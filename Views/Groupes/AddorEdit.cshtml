@@ -1,0 +1,46 @@
+﻿@model Suivi_Abs.Models.Groupe
+
+@{
+   
+}
+
+
+
+<h4>Groupe</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddorEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id_G " />
+            <div class="form-group">
+                <label asp-for="Numgroupe" class="control-label"></label>
+                <input asp-for="Numgroupe" class="form-control" />
+                <span asp-validation-for="Numgroupe" class="text-danger"></span>
+            </div>
+         
+            <div class="form-group">
+                <label asp-for="id_F" class="control-label"></label>
+                <select asp-for="id_F" asp-items=@ViewBag.liste  class="form-control"></select>
+               
+            
+            </div>
+         
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Valider" class="btn btn-primary btn-block" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i>Retourner à la liste</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

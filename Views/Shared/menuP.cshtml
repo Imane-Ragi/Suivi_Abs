@@ -1,0 +1,61 @@
+﻿
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Suivi_Abs</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://kit.fontawesome.com/5ef8a381d2.js" crossorigin="anonymous"></script>
+    <style>
+        th {
+            background-color: snow;
+            font-family: Tahoma;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-5 " style="height:50px">
+            <div class="container">
+                <img src="~/images/unnamed.jpg" width="150" height="40" style="position:absolute;left:40%;" alt="">
+                <a class="navbar-brand" asp-area="" asp-controller="HomeP" asp-action="Index" style=" text-shadow: 2px 2px 5px white;color:white;position:absolute;left:50%;">RG-EDUCATION</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-lg-inline-flex flex-lg-row-reverse">
+                    <ul>
+                        <li class="nav-item" style="position:absolute;right:10px;top:5px">
+                            <a class="nav-link  btn btn-danger btn-block" asp-area="" asp-controller="Login" asp-action="Logout"><i class="fa fa-sign-out md-margin" aria-hidden="true"></i></a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted navbar-dark bg-dark">
+        <div class="container" style="color:white">
+            &copy; 2020 - RG-EDUCATION - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+

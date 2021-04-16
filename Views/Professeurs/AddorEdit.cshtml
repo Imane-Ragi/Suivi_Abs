@@ -1,0 +1,59 @@
+﻿@model Suivi_Abs.Models.Professeur
+
+@{
+  
+}
+
+
+<h4>Professeur</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="AddorEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id_P " />
+            <div class="form-group">
+                <label asp-for="matricule" class="control-label"></label>
+                <input asp-for="matricule" class="form-control" />
+                <span asp-validation-for="matricule" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="nComplet" class="control-label"></label>
+                <input asp-for="nComplet" class="form-control" />
+                <span asp-validation-for="nComplet" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="specialité" class="control-label"></label>
+                <input asp-for="specialité" class="form-control" />
+                <span asp-validation-for="specialité" class="text-danger"></span>
+            </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="dateN" class="control-label"></label>
+        <input asp-for="dateN" class="form-control" />
+        <span asp-validation-for="dateN" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="dateR" class="control-label"></label>
+        <input asp-for="dateR" class="form-control" />
+        <span asp-validation-for="dateR" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="submit" value="Valider" class="btn btn-primary btn-block" />
+        </div>
+        <div class="form-group col-md-6">
+            <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i>Retoourner à la liste</a>
+        </div>
+    </div>
+   
+    </form>
+</div>
+</div>
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+ }
+

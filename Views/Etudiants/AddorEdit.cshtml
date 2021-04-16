@@ -1,0 +1,89 @@
+﻿@model Suivi_Abs.Models.Etudiant
+
+@{
+    
+}
+
+
+
+<h4>Etudiant</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddorEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id_E " />
+
+            <div class="form-group">
+                <label asp-for="matricule" class="control-label"></label>
+                <input asp-for="matricule" class="form-control" />
+                <span asp-validation-for="matricule" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="id_G" class="control-label"></label>
+                <select asp-for="id_G" asp-items=@ViewBag.liste class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ncomplet" class="control-label"></label>
+                <input asp-for="Ncomplet" class="form-control" />
+                <span asp-validation-for="Ncomplet" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+                <label asp-for="dateN" class="control-label"></label>
+                <input asp-for="dateN" class="form-control" />
+                <span asp-validation-for="dateN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lieu_n" class="control-label"></label>
+                <input asp-for="lieu_n" class="form-control" />
+                <span asp-validation-for="lieu_n" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="adresse" class="control-label"></label>
+                <input asp-for="adresse" class="form-control" />
+                <span asp-validation-for="adresse" class="text-danger"></span>
+            </div>
+           
+                <div class="form-group">
+
+                    <label asp-for="imageE" class="control-label">(Telecharger l'image du dossier /wwwroot/images)</label>
+
+                    <div class="custom-file">
+
+                        <input asp-for="imageE" class="custom-file-input" id="customFile" type="file" >
+                      
+                        <label class="custom-file-label" asp-for="imageE">Choose file</label>
+                    </div>
+                    <span asp-validation-for="imageE" class="text-danger"></span>
+                </div>
+            
+
+
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Valider" class="btn btn-primary btn-block" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i>Retourner à la liste</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+}
+
+   
+
+

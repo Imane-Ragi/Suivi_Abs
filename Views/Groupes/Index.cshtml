@@ -1,0 +1,42 @@
+﻿
+
+@{
+  
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="text-align:center"> Groupes</h1>
+
+<p>
+    <a asp-action="AddorEdit" class="btn btn-outline-success"> <i class="far fa-plus-square"></i>Groupe</a>
+</p>
+<div class="single-product-area">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+            <table class="card" style="width: 18rem;">
+               
+                <tr class="card-body">
+                <td>
+                <h5 class="card-title">@item.Numgroupe</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@item.Filiere.nFiliere</h6>
+                <a asp-action="AddorEdit" asp-route-id="@item.id_G"><i class="fa fa-marker fa-lg  card-link"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.id_G" class="text-danger ml-1 card-link" onclick="return confirm('vous risquez de supprimer toutes les infos liées à ce groupe')"><i class="fa fa-trash-alt fa-lg"></i></a>
+
+                    </td>
+                <td>
+                <a asp-action="ListEtudiants" asp-route-id="@item.id_G" class="btn-info card-link">Etudiants</a>
+                    </td>
+                    <td></td>
+                </tr>
+            
+                <tr></tr>
+            </table>
+
+            }
+
+        </div>
+
+    </div>
+</div>

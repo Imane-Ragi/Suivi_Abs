@@ -1,0 +1,56 @@
+﻿@model Suivi_Abs.Models.Compte
+
+@{
+    ViewData["Title"] = "AddorEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h4>Compte</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddorEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="id_C" />
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="matricule" class="control-label"></label>
+                <select asp-for="matricule" asp-items=@ViewBag.prof class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="nComplet" class="control-label"></label>
+                <input asp-for="nComplet" class="form-control" />
+                <span asp-validation-for="nComplet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="poste" class="control-label"></label>
+                <input asp-for="poste" class="form-control" />
+                <span asp-validation-for="poste" class="text-danger"></span>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Valider" class="btn btn-primary btn-block" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-secondary btn-block"><i class="fa fa-table"></i>Retourner à la liste</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+

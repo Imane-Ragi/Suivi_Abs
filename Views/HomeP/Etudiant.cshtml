@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Suivi_Abs.Models.Absence>
+@{
+    ViewData["Title"] = "Etudiant";
+    Layout = "~/Views/Shared/menuP.cshtml";
+}
+
+
+
+<h1 style="text-align:center">Etudiants</h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Nom Complet
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etudiant.matricule)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etudiant.Groupe.Numgroupe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etudiant.dateN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etudiant.lieu_n)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etudiant.adresse)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Etudiant.email)
+            </th>
+          <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@item.Etudiant.imageE"
+                         class="rounded-circle"
+                         height="40" width="40"
+                         asp-append-version="true" />
+                    @item.Etudiant.Ncomplet
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etudiant.matricule)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etudiant.Groupe.Numgroupe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etudiant.dateN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etudiant.lieu_n)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etudiant.adresse)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etudiant.email)
+                </td>
+                <td>
+                 
+                    <a asp-action="Abs_par_etudiant" asp-route-id="@item.id_E"><i class="fas fa-list-alt fa-lg">Absence</i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

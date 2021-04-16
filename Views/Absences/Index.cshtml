@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Suivi_Abs.Models.Absence>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1  style="text-align:center">Listes des absences </h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Etudiant.Ncomplet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seance.Groupe.Numgroupe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seance.Matiere.nMatiere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seance.Num_S)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Seance.date_S)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seance.Duree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Statut)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etudiant.Ncomplet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Etudiant.Groupe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seance.Matiere.nMatiere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seance.date_S)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seance.Duree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Statut)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.id_S)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_E)
+            </td>
+            <td>
+                <a asp-action="AddorEdit" asp-route-id="@item.id_RES"><i class="fa fa-marker fa-lg"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.id_RES" class="text-danger ml-1 btn " onclick="return confirm('vous etes sur de supprimer cette absence ?')"><i class="fa fa-trash-alt fa-lg"></i></a> |
+              >
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Suivi_Abs.Models.Absence>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/menuP.cshtml";
+}
+
+
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
+<div class="card">
+    <div class="card-header">
+        Remarque
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p>
+                pour avoir plus d'informations sur le  nombre d'absences et
+                le taux d'absentiesme pour chaque etudiant veillez
+                cliquez <a asp-action="Etudiant"> ici</a>
+            </p>
+
+        </blockquote>
+    </div>
+</div>
+<br />
+<hr />
+<div style="position:absolute;right:30%">
+    <form asp-controller="HomeP" asp-action="Index" method="get">
+        <p>
+
+            <select name="statut" class="form-control col-md-6" style="float:left;margin-right:30px">
+                <option value="Tous">Tous</option>
+                <option value="Absent">Absent</option>
+                <option value="present">present</option>
+            </select>
+            <input type="submit" value="Filter" class="btn btn-outline-success my-2 my-sm-0" style="float:left" />
+        </p>
+    </form>
+</div>
+<br />
+<div> <h5 style="text-align:center">Rechercher par : </h5></div>
+
+<br />
+<div>
+    @if (Model == null)
+    {
+        <span>no items found</span>
+    }
+    else
+    {
+        <table class="table table-active">
+            <thead>
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Etudiant.Ncomplet)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Etudiant.matricule)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Groupe.Numgroupe)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Seance.date_S)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Seance.Num_S)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Seance.Matiere.nMatiere)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Statut)
+                    </th>
+
+
+
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Etudiant.Ncomplet)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Etudiant.matricule)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Groupe.Numgroupe)
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Seance.date_S)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Seance.Num_S)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Seance.Matiere.nMatiere)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Statut)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer", {
+    exportEnabled: false,
+    animationEnabled: true,
+    theme: "light",
+    title: {
+        text: "Taux d'absentéismes dans chaque matière"
+    },
+    legend: {
+    cursor: "pointer",
+    itemclick: explodePie,
+    verticalAlign: "center",
+    horizontalAlign: "right"
+    },
+	data: [{
+		type: "pie",
+		showInLegend: true,
+		toolTipContent: "{name}: <strong>{y}%</strong>",
+		startAngle: -45,
+		indexLabel: "{name} ({y}%)",
+		indexLabelFontColor: "#12122B",
+		indexLabelPlacement: "inside",
+		indexLabelFontSize: 15,
+        dataPoints: @Html.Raw(ViewBag.Text)}]
+});
+        chart.render();
+
+        function explodePie(e) {
+            if (typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+                e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+            } else {
+                e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+            }
+            e.chart.render();
+        }
+
+    }
+</script>
+
+
+

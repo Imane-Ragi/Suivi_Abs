@@ -1,0 +1,54 @@
+﻿
+    @{
+        Layout = null;
+
+    }
+
+
+    <head>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+
+
+        <link href="~/css/Login_v3.css" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/5ef8a381d2.js" crossorigin="anonymous"></script>
+
+    </head>
+<body style="background-image:url(../images/Class.jpg)">
+    <div class="AnotherBox"  style="height:600px">
+        <h2>Marquer la présence</h2>
+        <form asp-action="VerifierAbs" method="post">
+
+            <input placeholder="entrez votre matricule" name="code" style="   color: #fff;" />
+            <label for="se" style="color:white">Veuillez saisir la date de la seance que vous allez assister  :</label>
+            <input id="se" type="datetime-local" name="debut" value="yyy-mm-jjTHH:mm">
+            @if (@ViewBag.vide != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    <span>@ViewBag.vide</span>
+                </div>}
+            @if (@ViewBag.succes != null)
+            {
+                <div class="alert alert-success" role="alert">
+                    <span>@ViewBag.succes</span>
+                </div>
+
+            }
+            @if( @ViewBag.echoue!=null)
+            {
+            <div class="alert alert-danger" role="alert">
+                <span>@ViewBag.echoue</span>
+            </div>
+            }
+
+
+            <div>
+                <center>  <button type="submit" class="btn btn-primary">Valider </button></center>
+            </div>
+
+        </form>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>

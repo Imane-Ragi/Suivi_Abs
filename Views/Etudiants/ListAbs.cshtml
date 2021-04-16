@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Suivi_Abs.Models.Absence>
+
+@{
+    ViewData["Title"] = "ListAbs";
+   
+}
+
+
+<div class="card text-white bg-danger mb-3" style="width: 13rem; float:left; width:50%;">
+     <div class="card-header" style="        font-family: 'Times New Roman', Times, serif;
+        text-align: center">Nombre d'absence : @ViewBag.nbrAbs  <i class="fas fa-exclamation-circle"></i> </div>
+  </div>
+<div class="card text-white bg-secondary mb-3 align-content-center" style="width: 13rem;float:right; width:50%;">
+    <div class="card-header" style="font-family:'Times New Roman', Times, serif;text-align:center">Taux d’absentéismes : @ViewBag.taux % </div>
+</div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+               
+               
+             
+                <th>
+                    @Html.DisplayNameFor(model => model.Seance.date_S)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Seance.Num_S)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Seance.Matiere.nMatiere)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Statut)
+                </th>
+              
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+               
+               <td>
+                    @Html.DisplayFor(modelItem => item.Seance.date_S)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seance.Num_S)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seance.Matiere.nMatiere)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Statut)
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Suivi_Abs.Models.Matiere>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (@ViewBag.erreur != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <span>@ViewBag.erreur</span>
+    </div>
+}
+<div>
+    <h1 style="text-align:center">Matieres</h1>
+
+    <p>
+
+    </p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nMatiere)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.filiere.nFiliere)
+                </th>
+                <th>
+                  Professeur
+                </th>
+                <th>
+                    <a asp-action="AddorEdit" class="btn btn-outline-success"> <i class="far fa-plus-square"></i>Matiere</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nMatiere)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.filiere.nFiliere)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Professeur.nComplet)
+                    </td>
+                    <td>
+                        <a asp-action="AddorEdit" asp-route-id="@item.id_M"><i class="fa fa-marker fa-lg"></i></a> |
+                        <a asp-action="Delete" asp-route-id="@item.id_M" class="text-danger ml-1" onclick="return confirm('vous risquez de supprimer toutes les infos liées à cette matiere')"><i class="fa fa-trash-alt fa-lg"></i></a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

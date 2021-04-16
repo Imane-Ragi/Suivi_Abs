@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Suivi_Abs.Models.Seance>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1  style="text-align:center">Seances</h1>
+
+
+<table class="table  table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.date_S)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Num_S)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matiere.nMatiere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Groupe.Filiere.nFiliere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Groupe.Numgroupe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Matiere.Professeur.nComplet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.numSalle)
+            </th>
+
+
+            <th>
+                <a asp-action="AddorEdit" class="btn btn-outline-success"> <i class="far fa-plus-square"></i>Séance</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_S)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Num_S)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matiere.nMatiere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Groupe.Filiere.nFiliere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Groupe.Numgroupe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matiere.Professeur.nComplet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numSalle)
+            </td>
+            <td>
+                <a asp-action="AddorEdit" asp-route-id="@item.id_S"><i class="fa fa-marker fa-lg"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.id_S" class="text-danger ml-1" onclick="return confirm('vous risquez de supprimer toutes les infos liées à cette Seance')"><i class="fa fa-trash-alt fa-lg"></i></a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

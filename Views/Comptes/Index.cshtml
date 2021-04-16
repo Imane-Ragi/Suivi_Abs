@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Suivi_Abs.Models.Compte>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="AddorEdit" class="btn btn-outline-success"> <i class="far fa-plus-square" style="float:left"></i> Compte Professeur</a>
+    <a asp-action="AddorEditA" class="btn btn-outline-success"> <i class="far fa-plus-square" style="float:left"></i> Compte Administrateur</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.matricule)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nComplet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.poste)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roleC)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.matricule)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nComplet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.poste)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.roleC)
+            </td>
+            <td>
+                @if (item.roleC=="admin")
+                {<a asp-action="AddorEditA" asp-route-id="@item.id_C"><i class="fa fa-marker fa-lg"></i></a>}
+                    else { <a asp-action="AddorEdit" asp-route-id="@item.id_C"><i class="fa fa-marker fa-lg"></i></a> }
+                |
+                <a asp-action="Delete" asp-route-id="@item.id_C" class="text-danger ml-1 btn " onclick="return confirm('vous risquez de supprimer toutes les infos liées à ce  Compte')"><i class="fa fa-trash-alt fa-lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
